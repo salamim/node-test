@@ -8,6 +8,6 @@ When no port is available, the API is avaiable on port 3000
 
 ## API Endpoints
 
-/api/v1/parse (POST)
-/api/v2/parse (POST)
+- /api/v1/parse (POST)
+- /api/v2/parse (POST)
 
