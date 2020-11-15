@@ -24,24 +24,31 @@ exports.router.post("/v1/parse", (req, res) => __awaiter(void 0, void 0, void 0,
             statusCode: 200,
             data: Client
         };
-        res.status(200).send(result);
+        res.status(200).json(result);
     }
     catch (e) {
-        res.status(404).send(e.message);
+        const error = {
+            statusCode: 400,
+            message: e.message
+        };
+        res.status(400).json(error);
     }
 }));
 exports.router.post("/v2/parse", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(req.body);
         let data = req.body.data;
         const Client = yield parse_service_1.parseV2(data);
         const result = {
             statusCode: 200,
             data: Client
         };
-        res.status(200).send(result);
+        res.status(200).json(result);
     }
     catch (e) {
-        res.status(404).send(e.message);
+        const error = {
+            statusCode: 400,
+            message: e.message
+        };
+        res.status(400).json(error);
     }
 }));

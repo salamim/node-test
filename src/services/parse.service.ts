@@ -7,14 +7,14 @@ const parseString = async(data: string): Promise<string[]> => {
     return parsedData;
 }
 
-const fromatPhoneNumber = async(phoneNumber: string): Promise<string> => {
-    let match = phoneNumber.match(/^(\d{3})(\d{4})$/);
+const fromatClientId = async(clientId: string): Promise<string> => {
+    let match = clientId.match(/^(\d{3})(\d{4})$/);
     
     if (match) {
         return match[1] + '-' + match[2]
     }
 
-    return phoneNumber;
+    return clientId;
 }
 
 export const parseV1 = async(data: string): Promise<Client> => {
@@ -35,7 +35,7 @@ export const parseV2 = async(data: string): Promise<Client> => {
     let newClient:Client = {
         firstName: parsedData[0],
         lastName: parsedData[4],
-        clientId: await fromatPhoneNumber(parsedData[7])
+        clientId: await fromatClientId(parsedData[7])
     };
 
     return newClient;

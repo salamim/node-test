@@ -15,12 +15,12 @@ const parseString = (data) => __awaiter(void 0, void 0, void 0, function* () {
     let parsedData = data.split("0");
     return parsedData;
 });
-const fromatPhoneNumber = (phoneNumber) => __awaiter(void 0, void 0, void 0, function* () {
-    let match = phoneNumber.match(/^(\d{3})(\d{4})$/);
+const fromatClientId = (clientId) => __awaiter(void 0, void 0, void 0, function* () {
+    let match = clientId.match(/^(\d{3})(\d{4})$/);
     if (match) {
         return match[1] + '-' + match[2];
     }
-    return '';
+    return clientId;
 });
 exports.parseV1 = (data) => __awaiter(void 0, void 0, void 0, function* () {
     let parsedData = yield parseString(data);
@@ -36,7 +36,7 @@ exports.parseV2 = (data) => __awaiter(void 0, void 0, void 0, function* () {
     let newClient = {
         firstName: parsedData[0],
         lastName: parsedData[4],
-        clientId: yield fromatPhoneNumber(parsedData[7])
+        clientId: yield fromatClientId(parsedData[7])
     };
     return newClient;
 });
